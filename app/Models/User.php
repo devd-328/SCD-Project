@@ -21,7 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'is_admin',
+=======
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
     ];
 
     /**
@@ -35,6 +38,7 @@ class User extends Authenticatable
     ];
 
     /**
+<<<<<<< HEAD
      * The attributes that should be cast to native types.
      *
      * @var array<string,string>
@@ -44,4 +48,17 @@ class User extends Authenticatable
         'password' => 'hashed',
         'is_admin' => 'boolean',
     ];
+=======
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
 }

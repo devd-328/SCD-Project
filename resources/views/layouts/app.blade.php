@@ -41,9 +41,16 @@
     <!-- Cart manager (frontend-only) -->
     <script src="{{ asset('assets/js/cart.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+<<<<<<< HEAD
 
     {{-- Allow pages to push scripts into the stack (preferred) and also support yield for single-script pages --}}
     @stack('scripts')
     @yield('scripts')
 </body>
 </html>
+=======
+    
+    @yield('scripts')
+</body>
+</html>
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e

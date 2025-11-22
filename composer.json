@@ -12,7 +12,10 @@
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+<<<<<<< HEAD
         "laravel/breeze": "^2.3",
+=======
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.24",
         "laravel/sail": "^1.41",

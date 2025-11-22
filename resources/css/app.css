@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
+=======
+
+/*
+    Note: file globs for Tailwind's content scanner belong in tailwind.config.js,
+    not in this CSS file. Custom theme values should also live in tailwind.config.js
+    (or as CSS variables below if you prefer runtime control).
+*/
+
+:root {
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system,
+        "Segoe UI", "Noto Color Emoji", sans-serif;
+}
+
+/* Base styles */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-sans);
+}
+
+/* Add your custom CSS below */
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e

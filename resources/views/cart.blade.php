@@ -33,4 +33,25 @@
 
 @section('scripts')
     <script src="{{ asset('assets/js/cart.js') }}"></script>
+<<<<<<< HEAD
+=======
+        <!-- Thank you modal (shown after simulated checkout) -->
+        <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="thankYouLabel">Thank you!</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Your order has been placed.</p>
+                        <p class="fw-semibold">Order total: <span id="thankYouTotal">₹0.00</span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
 @endsection

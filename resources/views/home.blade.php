@@ -219,6 +219,7 @@
         </div>
     </div>
 </section>
+<<<<<<< HEAD
 
 <!-- Product Details Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
@@ -333,4 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
+=======
+>>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
 @endsection
