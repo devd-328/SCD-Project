@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <rect width="100%" height="100%" fill="#fff"/>
+  <g transform="translate(160,120)">
+    <ellipse cx="300" cy="320" rx="220" ry="120" fill="#d6a76a"/>
+    <ellipse cx="640" cy="360" rx="220" ry="120" fill="#c98f4a"/>
+    <ellipse cx="460" cy="240" rx="200" ry="110" fill="#d2a06a"/>
+    <text x="60" y="660" font-family="Segoe UI, Arial" font-size="48" fill="#555">Red Potatoes (1kg)</text>
+  </g>
+</svg>

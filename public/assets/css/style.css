@@ -1,0 +1,422 @@
+/* ===================================
+   AgriConnect Custom Styles
+   =================================== */
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Color Variables */
+:root {
+    --primary-color: #28a745;
+    --secondary-color: #218838;
+    --light-bg: #f8f9fa;
+    --dark-text: #333;
+    --muted-text: #6c757d;
+    --border-color: #dee2e6;
+    --shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    --shadow-lg: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navbar Styles */
+.navbar {
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+}
+
+.min-vh-75 {
+    min-height: 75vh;
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Feature Cards */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.icon-box {
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .icon-box {
+    transform: scale(1.1);
+}
+
+/* Product Cards */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-wrapper img {
+    transform: scale(1.1);
+}
+
+/* Farmer Cards */
+.farmer-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.farmer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.farmer-image img {
+    transition: transform 0.3s ease;
+}
+
+.farmer-card:hover .farmer-image img {
+    transform: scale(1.05);
+}
+
+/* Hover Lift Effect */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 0.375rem;
+}
+
+.btn-success {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-success:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+.btn-outline-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+/* Page Header */
+.page-header {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+/* Forms */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+.form-control,
+.form-select {
+    border-radius: 0.375rem;
+    padding: 0.625rem 0.875rem;
+}
+/* Badges */
+.badge {
+    font-weight: 500;
+    padding: 0.5rem 0.875rem;
+}
+/* Footer */
+footer a {
+    transition: all 0.3s ease;
+}
+footer a:hover {
+    color: var(--primary-color) !important;
+    transform: translateX(5px);
+}
+.social-links a {
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+.social-links a:hover {
+    transform: translateY(-3px);
+    color: var(--primary-color) !important;
+}
+/* Alerts */
+.alert {
+    border-radius: 0.5rem;
+    border: none;
+}
+/* Shadows */
+.shadow-sm {
+    box-shadow: var(--shadow) !important;
+}
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1) !important;
+}
+/* Statistics Section */
+.stat-card {
+    padding: 2rem;
+    transition: transform 0.3s ease;
+}
+.stat-card:hover {
+    transform: scale(1.05);
+}
+/* Responsive Utilities */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: #fff;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        box-shadow: var(--shadow);
+    }
+    .nav-link::after {
+        display: none;
+    }
+}
+@media (max-width: 767.98px) {
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+    .display-4 {
+        font-size: 2rem;
+    }
+
+    .product-image-wrapper {
+        height: 200px;
+    }
+}
+@media (max-width: 575.98px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .btn-lg {
+        padding: 0.625rem 1.25rem;
+        font-size: 1rem;
+    }
+}
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+/* Card Hover Effects */
+.card {
+    border-radius: 0.5rem;
+}
+.card-body {
+    padding: 1.5rem;
+}
+/* Image Placeholder */
+img[src=""],
+img:not([src]) {
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+}
+/* Contact Form Validation */
+.was-validated .form-control:valid,
+.form-control.is-valid {
+    border-color: var(--primary-color);
+    background-image: none;
+}
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+    background-image: none;
+}
+/* Smooth Transitions */
+
+*,
+*::before,
+*::after {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+button,
+a,
+.btn {
+    transition-property: all;
+}
+/* Accessibility */
+.btn:focus,
+.form-control:focus,
+.form-select:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+/* Print Styles */
+@media print {
+    .navbar,
+    footer,
+    .btn,
+    .social-links {
+        display: none;
+    }
+}
+
+/* Footer visibility / contrast fixes */
+footer {
+    /* Ensure footer sits above any accidental overlays and has clear contrast */
+    position: relative;
+    z-index: 1;
+    background-color: #1f2729; /* slightly lighter dark to improve contrast with icons */
+    color: #e9ecef;
+}
+
+footer .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+footer h5,
+footer .text-success {
+    color: var(--primary-color) !important;
+}
+
+footer .text-muted {
+    color: rgba(255, 255, 255, 0.72) !important;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+footer a:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Social icons */
+.social-links a {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Make the footer divider visible on dark backgrounds */
+hr.border-secondary {
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* Ensure focus outlines remain accessible in the footer */
+footer a:focus,
+footer a:active {
+    outline: 2px solid rgba(40, 167, 69, 0.25);
+    outline-offset: 2px;
+}
