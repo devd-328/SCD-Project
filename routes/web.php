@@ -5,12 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\ContactController;
-<<<<<<< HEAD
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\CheckoutController;
-=======
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
-
 
 // Home & About Pages
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -26,7 +22,6 @@ Route::get('/community', [FarmerController::class, 'index'])->name('farmers.inde
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
-<<<<<<< HEAD
 // Frontend-only cart page 
 Route::view('/cart', 'cart')->name('cart');
 
@@ -49,7 +44,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     // Product CRUD Routes (RESTful)
     Route::resource('products', AdminProductController::class);
 });
-=======
-// Frontend-only cart page (no backend integration)
-Route::view('/cart', 'cart')->name('cart');
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e

@@ -356,75 +356,16 @@
     function attachTotalsListeners() {
         // attach checkout (only once)
         const checkout = document.getElementById("checkoutBtn");
-<<<<<<< HEAD
         if (checkout && !checkout.dataset.agriAttached) {
             checkout.addEventListener("click", function(e) {
                 e.preventDefault();
-=======
-        const checkoutHandler = function () {
-            try {
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
                 const cart = getCart();
                 if (!cart || cart.length === 0) {
                     showToast("Your cart is empty.", { type: "info" });
                     return;
                 }
-<<<<<<< HEAD
                 window.location.href = "/checkout";
             });
-=======
-                const subtotal = cart.reduce(
-                    (s, it) =>
-                        s +
-                        (parseFloat(it.price) || 0) *
-                            (parseInt(it.qty, 10) || 1),
-                    0
-                );
-                const tax = +(subtotal * 0.05).toFixed(2);
-                const total = +(subtotal + tax).toFixed(2);
-
-                // populate modal total
-                const totalEl = document.getElementById("thankYouTotal");
-                if (totalEl) totalEl.textContent = formatCurrency(total);
-
-                const modalEl = document.getElementById("thankYouModal");
-                if (modalEl && window.bootstrap && window.bootstrap.Modal) {
-                    const bsModal = new bootstrap.Modal(modalEl);
-                    // clear cart when modal hidden
-                    modalEl.addEventListener(
-                        "hidden.bs.modal",
-                        function onHide() {
-                            try {
-                                localStorage.removeItem(STORAGE_KEY);
-                            } catch (e) {}
-                            renderCart();
-                            modalEl.removeEventListener(
-                                "hidden.bs.modal",
-                                onHide
-                            );
-                        }
-                    );
-                    bsModal.show();
-                } else {
-                    showToast(
-                        "Thank you for your order!\nTotal: " +
-                            formatCurrency(total)
-                    );
-                    try {
-                        localStorage.removeItem(STORAGE_KEY);
-                    } catch (e) {}
-                    renderCart();
-                }
-            } catch (err) {
-                try {
-                    localStorage.removeItem(STORAGE_KEY);
-                } catch (e) {}
-                renderCart();
-            }
-        };
-        if (checkout && !checkout.dataset.agriAttached) {
-            checkout.addEventListener("click", checkoutHandler);
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
             checkout.dataset.agriAttached = "1";
         }
 
@@ -435,11 +376,7 @@
                 const cart = getCart();
                 if (!cart || cart.length === 0) {
                     showToast(
-<<<<<<< HEAD
-                        "Nothing to clear your cart is already empty.",
-=======
                         "Nothing to clear — your cart is already empty.",
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
                         { type: "info" }
                     );
                     return;
@@ -489,17 +426,12 @@
         const cart = getCart();
         const existing = cart.find((c) => c.id === item.id);
         if (existing) {
-<<<<<<< HEAD
-            existing.qty = (parseInt(existing.qty, 10) || 0) + 1;
-        } else {
-            cart.push(Object.assign({ qty: 1 }, item));
-        }
-=======
             existing.qty =
                 (parseInt(existing.qty, 10) || 0) +
                 (parseInt(item.qty, 10) || 1);
-        } else cart.push(Object.assign({ qty: 1 }, item));
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
+        } else {
+            cart.push(Object.assign({ qty: 1 }, item));
+        }
         saveCart(cart);
         renderCart();
     }

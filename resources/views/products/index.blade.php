@@ -26,7 +26,7 @@
                         <h5 class="fw-bold mb-4">
                             <i class="bi bi-funnel me-2"></i>Filters
                         </h5>
-<<<<<<< HEAD
+                        
                         <form action="{{ route('products.index') }}" method="GET" id="filterForm">
                             <div class="mb-4">
                                 <label class="form-label fw-semibold">Search Products</label>
@@ -53,42 +53,6 @@
                     </div>
                 </div>
             </div>
-=======
-                        
-                        <!-- Search -->
-                        <form action="{{ route('products.index') }}" method="GET" id="filterForm">
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Search Products</label>
-                                <input type="text" name="search" class="form-control" 
-                                       placeholder="Search..." value="{{ $search ?? '' }}">
-                            </div>
-                            
-                               <!--   Category Filter -->
-<div class="mb-4">
-<label class="form-label fw-semibold">Category</label>
-<select name="category" class="form-select" onchange="document.getElementById('filterForm').submit()">
-<option value="all" {{ (!$category || $category == 'all') ? 'selected' : '' }}>All Categories</option>
-@foreach($categories as $cat)
-<option value="{{ $cat }}" {{ $category == $cat ? 'selected' : '' }}>
-{{ $cat }}
-</option>
-@endforeach
-</select>
-</div>
-<button type="submit" class="btn btn-success w-100">
-                            <i class="bi bi-search me-2"></i>Apply Filters
-                        </button>
-                        
-                        @if($category || $search)
-                        <a href="{{ route('products.index') }}" class="btn btn-outline-secondary w-100 mt-2">
-                            <i class="bi bi-x-circle me-2"></i>Clear Filters
-                        </a>
-                        @endif
-                    </form>
-                </div>
-            </div>
-        </div>
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
         
         <!-- Products Grid -->
         <div class="col-lg-9">
@@ -104,32 +68,19 @@
                     @endif
                 </h5>
             </div>
-<<<<<<< HEAD
-=======
             
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
             @if(count($products) > 0)
             <div class="row g-4">
                 @foreach($products as $product)
                 <div class="col-md-6 col-lg-4">
                     <div class="card product-card h-100 border-0 shadow-sm hover-lift">
                         <div class="product-image-wrapper position-relative">
-<<<<<<< HEAD
                             @php
                                 // Prefer a pre-computed full URL when present (DB-backed products).
                                 $imgUrl = $product['image_url'] ?? (isset($product['image']) ? asset('assets/images/products/' . $product['image']) : null);
                             @endphp
                             <img src="{{ $imgUrl }}" class="card-img-top" alt="{{ $product['name'] }}"
                                  onerror="this.src='https://via.placeholder.com/400x300?text={{ urlencode($product['name']) }}'">
-=======
-                            <?php $base = preg_replace('/\.[^.]+$/', '', $product['image']); $ext = pathinfo($product['image'], PATHINFO_EXTENSION); ?>
-                            <picture>
-                                <source srcset="{{ asset('assets/images/products/' . $base . '.webp') }}" type="image/webp">
-                                <img src="{{ asset('assets/images/products/' . $base . '.' . $ext) }}"
-                                     class="card-img-top" alt="{{ $product['name'] }}"
-                                     onerror="this.src='https://via.placeholder.com/400x300?text={{ urlencode($product['name']) }}'">
-                            </picture>
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
                             <span class="badge bg-success position-absolute top-0 end-0 m-3">
                                 {{ $product['category'] }}
                             </span>
@@ -151,7 +102,6 @@
                                 <span class="h5 text-success mb-0">
                                     Rs {{ number_format($product['price'], 2) }}/{{ $product['unit'] }}
                                 </span>
-<<<<<<< HEAD
                                 <div>
                                     <button class="btn btn-success btn-sm add-to-cart-btn me-1"
                                         data-id="{{ $product['id'] ?? 'p' . $loop->index }}"
@@ -176,16 +126,6 @@
                                         Details
                                     </button>
                                 </div>
-=======
-                                <button class="btn btn-success btn-sm add-to-cart-btn"
-                                    data-id="{{ $product['id'] ?? 'p' . $loop->index }}"
-                                    data-name="{{ e($product['name']) }}"
-                                    data-price="{{ number_format($product['price'], 2, '.', '') }}"
-                                    data-image="{{ asset('assets/images/products/' . $product['image']) }}"
-                                    data-qty="1">
-                                    <i class="bi bi-cart-plus me-1"></i>Add to Cart
-                                </button>
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
                             </div>
                         </div>
                     </div>
@@ -206,7 +146,6 @@
     </div>
 </div>
 </section>
-<<<<<<< HEAD
 
 <!-- Product Details Modal -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
@@ -337,6 +276,4 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
-=======
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
 @endsection

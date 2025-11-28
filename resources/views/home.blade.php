@@ -219,59 +219,11 @@
         </div>
     </div>
 </section>
-<<<<<<< HEAD
-
-<!-- Product Details Modal -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold" id="productModalLabel">Product Details</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <img id="modal-product-image" src="" alt="Product" class="img-fluid rounded shadow-sm w-100" style="max-height: 400px; object-fit: cover;">
-                    </div>
-                    <div class="col-md-6">
-                        <span id="modal-product-category" class="badge bg-success mb-3"></span>
-                        <h3 id="modal-product-name" class="fw-bold mb-3"></h3>
-                        <p id="modal-product-description" class="text-muted mb-4"></p>
-                        
-                        <div class="mb-3">
-                            <h4 class="text-success fw-bold">
-                                Rs <span id="modal-product-price"></span>/<span id="modal-product-unit"></span>
-                            </h4>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <p class="mb-2">
-                                <i class="bi bi-shop text-success me-2"></i>
-                                <strong>Farmer:</strong> <span id="modal-product-farmer"></span>
-                            </p>
-                            <p class="mb-0">
-                                <i class="bi bi-geo-alt text-success me-2"></i>
-                                <strong>Location:</strong> <span id="modal-product-location"></span>
-                            </p>
-                        </div>
-                        
-                        <div class="d-grid gap-2 mt-4">
-                            <button id="modal-add-to-cart" class="btn btn-success btn-lg">
-                                <i class="bi bi-cart-plus me-2"></i>Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Add to Cart for product cards (above details)
+    // Add to Cart for product cards
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
         if (button.dataset.cartAttached) return;
         button.addEventListener('click', function(e) {
@@ -280,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 id: this.getAttribute('data-id'),
                 name: this.getAttribute('data-name'),
                 price: parseFloat(this.getAttribute('data-price')),
-                qty: 1, // Always add only one item per click
+                qty: 1,
                 image: this.getAttribute('data-image')
             };
             if (window.AgriCart && typeof window.AgriCart.add === 'function') {
@@ -292,48 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         button.dataset.cartAttached = '1';
     });
-    // Handle View Details button clicks
-    document.querySelectorAll('.view-details-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            const productId = this.getAttribute('data-id');
-            const productName = this.getAttribute('data-name');
-            const productDescription = this.getAttribute('data-description');
-            const productPrice = this.getAttribute('data-price');
-            const productUnit = this.getAttribute('data-unit');
-            const productFarmer = this.getAttribute('data-farmer');
-            const productCategory = this.getAttribute('data-category');
-            const productLocation = this.getAttribute('data-location');
-            const productImage = this.getAttribute('data-image');
-
-            // Debug: Log all values
-            console.log('View Details Clicked:', {
-                productId, productName, productDescription, productPrice, productUnit, productFarmer, productCategory, productLocation, productImage
-            });
-
-            // Update modal content
-            document.getElementById('modal-product-name').textContent = productName || '-';
-            document.getElementById('modal-product-description').textContent = productDescription || '-';
-            document.getElementById('modal-product-price').textContent = productPrice || '-';
-            document.getElementById('modal-product-unit').textContent = productUnit || '-';
-            document.getElementById('modal-product-farmer').textContent = productFarmer || '-';
-            document.getElementById('modal-product-category').textContent = productCategory || '-';
-            document.getElementById('modal-product-location').textContent = productLocation || '-';
-            document.getElementById('modal-product-image').src = productImage || '';
-            document.getElementById('modal-product-image').alt = productName || 'Product';
-
-            // Update Add to Cart button in modal
-            const modalCartBtn = document.getElementById('modal-add-to-cart');
-            modalCartBtn.setAttribute('data-id', productId);
-            modalCartBtn.setAttribute('data-name', productName);
-            modalCartBtn.setAttribute('data-price', productPrice);
-            modalCartBtn.setAttribute('data-image', productImage);
-            modalCartBtn.setAttribute('data-qty', '1');
-            modalCartBtn.classList.add('add-to-cart-btn');
-        });
-    });
 });
 </script>
 @endpush
-=======
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
 @endsection

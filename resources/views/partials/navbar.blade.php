@@ -45,7 +45,6 @@
                         <i class="bi bi-cart me-1"></i> Cart <span id="cart-count" class="badge bg-success ms-1">0</span>
                     </a>
                 </li>
-<<<<<<< HEAD
                 @auth
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('admin*') ? 'active' : '' }}" href="{{ url('/admin') }}">
@@ -53,8 +52,6 @@
                     </a>
                 </li>
                 @endauth
-=======
->>>>>>> b1ee59a59cecc1750eaa6a3df0b0c673f4bbfa4e
             </ul>
         </div>
     </div>
