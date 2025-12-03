@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FarmerController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\FarmerController as AdminFarmerController;
 use App\Http\Controllers\CheckoutController;
 
 // Home & About Pages
@@ -43,4 +44,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     
     // Product CRUD Routes (RESTful)
     Route::resource('products', AdminProductController::class);
+    
+    // Farmer CRUD Routes (RESTful)
+    Route::resource('farmers', AdminFarmerController::class);
 });

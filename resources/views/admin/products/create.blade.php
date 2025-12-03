@@ -120,8 +120,8 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">Product Image</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" 
-                               id="image" name="image" accept="image/*">
-                        <small class="text-muted">Max size: 2MB. Formats: JPEG, PNG, JPG, GIF</small>
+                               id="image" name="image" accept=".jpg,.jpeg,.png,.webp">
+                        <small class="text-muted">Max size: 1MB. Allowed formats: JPG, PNG, WebP</small>
                         @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

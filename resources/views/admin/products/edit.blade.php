@@ -122,7 +122,7 @@
                             <option value="">Select Farmer</option>
                             @foreach($farmers as $farmer)
                                 <option value="{{ $farmer->id }}" {{ old('farmer_id', $product->farmer_id) == $farmer->id ? 'selected' : '' }}>
-                                    {{ $farmer->farm_name }} - {{ $farmer->user->name }}
+                                    {{ $farmer->farm_name }} - {{ $farmer->user?->name ?? 'Unknown' }}
                                 </option>
                             @endforeach
                         </select>
@@ -146,8 +146,8 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">Upload New Image (Optional)</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" 
-                               id="image" name="image" accept="image/*">
-                        <small class="text-muted">Leave empty to keep current image. Max size: 2MB</small>
+                               id="image" name="image" accept=".jpg,.jpeg,.png,.webp">
+                        <small class="text-muted">Leave empty to keep current image. Max size: 1MB. Allowed formats: JPG, PNG, WebP</small>
                         @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

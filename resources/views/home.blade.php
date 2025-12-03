@@ -153,13 +153,9 @@
             <div class="col-md-4">
                 <div class="card product-card h-100 border-0 shadow-sm">
                     <div class="product-image-wrapper">
-                        <?php $base = preg_replace('/\.[^.]+$/', '', $product['image']); $ext = pathinfo($product['image'], PATHINFO_EXTENSION); ?>
-                        <picture>
-                            <source srcset="{{ asset('assets/images/products/' . $base . '.webp') }}" type="image/webp">
-                            <img src="{{ asset('assets/images/products/' . $base . '.' . $ext) }}"
-                                 class="card-img-top" alt="{{ $product['name'] }}"
-                                 onerror="this.src='https://via.placeholder.com/400x300?text={{ urlencode($product['name']) }}'">
-                        </picture>
+                        <img src="{{ asset('assets/images/products/' . $product['image']) }}"
+                             class="card-img-top" alt="{{ $product['name'] }}"
+                             onerror="this.src='https://via.placeholder.com/400x300?text={{ urlencode($product['name']) }}'">
                         <span class="badge bg-success position-absolute top-0 end-0 m-3">
                             {{ $product['category'] }}
                         </span>

@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="card-footer bg-transparent border-0">
-                <a href="{{ route('farmers.index') }}" class="text-white text-decoration-none small">
+                <a href="{{ route('admin.farmers.index') }}" class="text-white text-decoration-none small">
                     View Farmers <i class="bi bi-arrow-right"></i>
                 </a>
             </div>
@@ -181,6 +181,9 @@
                     </a>
                     <a href="{{ route('admin.products.index') }}" class="btn btn-outline-primary">
                         <i class="bi bi-list-ul me-2"></i> Manage Products
+                    </a>
+                    <a href="{{ route('admin.farmers.index') }}" class="btn btn-outline-info">
+                        <i class="bi bi-people me-2"></i> Manage Farmers
                     </a>
                     <a href="{{ route('home') }}" class="btn btn-outline-secondary">
                         <i class="bi bi-globe me-2"></i> View Website

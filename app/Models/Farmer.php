@@ -10,6 +10,7 @@ class Farmer extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'user_id',
         'farm_name',
         'bio',
@@ -17,6 +18,8 @@ class Farmer extends Model
         'specialization',
         'phone',
         'email',
+        'profile_image',
+        'status',
     ];
 
     public function user()

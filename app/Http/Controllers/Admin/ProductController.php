@@ -45,7 +45,7 @@ class ProductController extends Controller
             'status' => 'nullable|string|in:active,inactive,out_of_stock',
             'is_organic' => 'nullable|boolean',
             'harvest_date' => 'nullable|date',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:1024',
         ]);
 
         if ($request->hasFile('image')) {
@@ -104,7 +104,7 @@ class ProductController extends Controller
             'status' => 'nullable|string|in:active,inactive,out_of_stock',
             'is_organic' => 'nullable|boolean',
             'harvest_date' => 'nullable|date',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,jpg,png,webp|max:1024',
         ]);
 
         if ($request->hasFile('image')) {

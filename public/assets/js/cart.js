@@ -5,12 +5,13 @@
     const FEATURED_PRODUCTS = [];
 
     // A small promo product shown on the empty-cart page so users can add at least one item directly
+    // This should match a real product from your database
     const PROMO_PRODUCT = {
-        id: "promo-tomato",
-        name: "Fresh Tomatoes (1kg)",
+        id: 2,
+        name: "Coconut",
         price: 300,
         qty: 1,
-        image: "/assets/images/products/tomatoes.webp",
+        image: "/assets/images/products/1763767932_coconut.jpg",
     };
 
     function getCart() {

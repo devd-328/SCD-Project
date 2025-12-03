@@ -45,13 +45,11 @@
                         <i class="bi bi-cart me-1"></i> Cart <span id="cart-count" class="badge bg-success ms-1">0</span>
                     </a>
                 </li>
-                @auth
                 <li class="nav-item">
                     <a class="nav-link {{ request()->is('admin*') ? 'active' : '' }}" href="{{ url('/admin') }}">
                         <i class="bi bi-shield-lock me-1"></i> Admin
                     </a>
                 </li>
-                @endauth
             </ul>
         </div>
     </div>
