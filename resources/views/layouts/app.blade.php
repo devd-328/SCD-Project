@@ -20,6 +20,11 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     
+    <script>
+        window.isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
+        window.loginUrl = "{{ route('login') }}";
+    </script>
+
     @yield('styles')
 </head>
 <body>

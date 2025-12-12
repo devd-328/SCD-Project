@@ -144,15 +144,11 @@
             }
         } else {
             var p = PROMO_PRODUCT;
-            var base = p.image ? p.image.replace(/\.[^.]+$/, "") : "";
+            // Simplified image rendering - rely on the provided path
             cardsHtml =
                 '<div class="col-sm-6 col-md-4 mb-3">' +
                 '<div class="card product-card h-100 border-0 shadow-sm hover-lift">' +
                 '<div class="product-image-wrapper position-relative">' +
-                "<picture>" +
-                '<source srcset="' +
-                base +
-                '.webp" type="image/webp">' +
                 '<img src="' +
                 p.image +
                 '" class="card-img-top" alt="' +
@@ -160,7 +156,6 @@
                 '" onerror="this.src=\'https://via.placeholder.com/400x300?text=' +
                 encodeURIComponent(p.name) +
                 "'\">" +
-                "</picture>" +
                 "</div>" +
                 '<div class="card-body">' +
                 '<h5 class="card-title fw-bold mb-1">' +
@@ -207,7 +202,7 @@
         html += "</div>";
         html += '<div class="col-md-5 text-center d-none d-md-block">';
         html +=
-            '<img src="/assets/images/empty-basket.png" alt="Empty basket" style="max-width:320px;opacity:0.6;" onerror="this.style.display=\'none\'"/>';
+            '<img src="/assets/images/empty-basket.png" alt="Empty basket" style="max-width:320px;opacity:0.6;" onerror="this.src=\'https://via.placeholder.com/320x240?text=Empty+Cart\'"/>';
         html += "</div>";
         html += "</div>";
         if (cardsHtml) {
@@ -215,41 +210,6 @@
             html += '<div class="row g-3 mt-3">' + cardsHtml + "</div>";
         }
         return html;
-    }
-
-    // Attach listeners for the featured product add buttons rendered in the empty state
-    function attachEmptyListeners() {
-        const root = document.getElementById("cart-list-area");
-        if (!root) return;
-        root.querySelectorAll(".empty-add-btn").forEach((btn) => {
-            if (btn.dataset.agriAttached) return;
-            btn.addEventListener("click", function (e) {
-                e.preventDefault();
-                const item = {
-                    id: btn.getAttribute("data-id") || "f-" + Date.now(),
-                    name: btn.getAttribute("data-name") || "Product",
-                    price: parseFloat(btn.getAttribute("data-price")) || 0,
-                    qty: parseInt(btn.getAttribute("data-qty") || "1", 10) || 1,
-                    image: btn.getAttribute("data-image") || null,
-                };
-                try {
-                    if (
-                        window.AgriCart &&
-                        typeof window.AgriCart.add === "function"
-                    ) {
-                        window.AgriCart.add(item);
-                        showToast(`${item.name} added to cart.`);
-                        updateBadge();
-                        announce(`${item.name} added to cart.`);
-                    } else {
-                        showToast("Added to cart.");
-                    }
-                } catch (err) {
-                    showToast("Added to cart.");
-                }
-            });
-            btn.dataset.agriAttached = "1";
-        });
     }
 
     // Small ARIA announcer for screen readers
@@ -273,8 +233,6 @@
         const cart = getCart();
         if (!cart || cart.length === 0) {
             root.innerHTML = renderEmpty();
-            // attach listeners for featured product buttons
-            attachEmptyListeners();
             updateBadge();
             return;
         }
@@ -446,6 +404,7 @@
             renderCart();
         },
     };
+    window.showToast = showToast;
 
     // render on load
     document.addEventListener("DOMContentLoaded", function () {

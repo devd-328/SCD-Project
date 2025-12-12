@@ -178,9 +178,20 @@
                                     data-qty="1">
                                     <i class="bi bi-cart-plus me-1"></i>Add to Cart
                                 </button>
-                                <a href="{{ route('products.index') }}" class="btn btn-outline-success btn-sm">
+                                <button class="btn btn-outline-success btn-sm view-details-btn"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#productModal"
+                                    data-id="{{ $product['id'] ?? 'p' . $loop->index }}"
+                                    data-name="{{ e($product['name']) }}"
+                                    data-description="{{ e($product['description']) }}"
+                                    data-price="{{ number_format($product['price'], 2, '.', '') }}"
+                                    data-unit="{{ $product['unit'] }}"
+                                    data-farmer="{{ e($product['farmer']) }}"
+                                    data-category="{{ $product['category'] }}"
+                                    data-location="{{ $product['location'] ?? 'Pakistan' }}"
+                                    data-image="{{ asset('assets/images/products/' . $product['image']) }}">
                                     View Details
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -196,6 +207,53 @@
         </div>
     </div>
 </section>
+
+<!-- Product Details Modal -->
+<div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold" id="productModalLabel">Product Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img id="modal-product-image" src="" alt="Product" class="img-fluid rounded shadow-sm w-100" style="max-height: 400px; object-fit: cover;">
+                    </div>
+                    <div class="col-md-6">
+                        <span id="modal-product-category" class="badge bg-success mb-3"></span>
+                        <h3 id="modal-product-name" class="fw-bold mb-3"></h3>
+                        <p id="modal-product-description" class="text-muted mb-4"></p>
+                        
+                        <div class="mb-3">
+                            <h4 class="text-success fw-bold">
+                                Rs <span id="modal-product-price"></span>/<span id="modal-product-unit"></span>
+                            </h4>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <p class="mb-2">
+                                <i class="bi bi-shop text-success me-2"></i>
+                                <strong>Farmer:</strong> <span id="modal-product-farmer"></span>
+                            </p>
+                            <p class="mb-0">
+                                <i class="bi bi-geo-alt text-success me-2"></i>
+                                <strong>Location:</strong> <span id="modal-product-location"></span>
+                            </p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 mt-4">
+                            <button id="modal-add-to-cart" class="btn btn-success btn-lg">
+                                <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Call to Action Section -->
 <section class="py-5 bg-success text-white">
@@ -219,26 +277,39 @@
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Add to Cart for product cards
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        if (button.dataset.cartAttached) return;
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const item = {
-                id: this.getAttribute('data-id'),
-                name: this.getAttribute('data-name'),
-                price: parseFloat(this.getAttribute('data-price')),
-                qty: 1,
-                image: this.getAttribute('data-image')
-            };
-            if (window.AgriCart && typeof window.AgriCart.add === 'function') {
-                window.AgriCart.add(item);
-                if (window.showToast) showToast(item.name + ' added to cart.');
-            } else {
-                alert(item.name + ' added to cart.');
-            }
+    // Handle View Details button clicks
+    document.querySelectorAll('.view-details-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-id');
+            const productName = this.getAttribute('data-name');
+            const productDescription = this.getAttribute('data-description');
+            const productPrice = this.getAttribute('data-price');
+            const productUnit = this.getAttribute('data-unit');
+            const productFarmer = this.getAttribute('data-farmer');
+            const productCategory = this.getAttribute('data-category');
+            const productLocation = this.getAttribute('data-location');
+            const productImage = this.getAttribute('data-image');
+            
+            // Update modal content
+            document.getElementById('modal-product-name').textContent = productName;
+            document.getElementById('modal-product-description').textContent = productDescription;
+            document.getElementById('modal-product-price').textContent = productPrice;
+            document.getElementById('modal-product-unit').textContent = productUnit;
+            document.getElementById('modal-product-farmer').textContent = productFarmer;
+            document.getElementById('modal-product-category').textContent = productCategory;
+            document.getElementById('modal-product-location').textContent = productLocation;
+            document.getElementById('modal-product-image').src = productImage;
+            document.getElementById('modal-product-image').alt = productName;
+            
+            // Update Add to Cart button in modal
+            const modalCartBtn = document.getElementById('modal-add-to-cart');
+            modalCartBtn.setAttribute('data-id', productId);
+            modalCartBtn.setAttribute('data-name', productName);
+            modalCartBtn.setAttribute('data-price', productPrice);
+            modalCartBtn.setAttribute('data-image', productImage);
+            modalCartBtn.setAttribute('data-qty', '1');
+            modalCartBtn.classList.add('add-to-cart-btn');
         });
-        button.dataset.cartAttached = '1';
     });
 });
 </script>

@@ -8,9 +8,14 @@
         <h2 class="fw-bold mb-1">Products Management</h2>
         <p class="text-muted">Manage all products in your inventory</p>
     </div>
-    <a href="{{ route('admin.products.create') }}" class="btn btn-success">
-        <i class="bi bi-plus-circle me-2"></i> Add New Product
-    </a>
+    <div class="d-flex gap-2">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+        </a>
+        <a href="{{ route('admin.products.create') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle me-2"></i> Add New Product
+        </a>
+    </div>
 </div>
 
 <!-- Products Table -->
@@ -78,15 +83,13 @@
                                    class="btn btn-warning" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form action="{{ route('admin.products.destroy', $product->id) }}" 
-                                      method="POST" class="d-inline"
-                                      onsubmit="return confirm('Are you sure you want to delete this product?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" title="Delete">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn-danger" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deleteConfirmationModal" 
+                                        data-action="{{ route('admin.products.destroy', $product->id) }}"
+                                        title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>

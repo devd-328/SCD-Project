@@ -74,21 +74,21 @@
     </div>
 
     <div class="col-lg-3 col-md-6">
-        <div class="card border-0 shadow-sm bg-danger text-white h-100">
+        <div class="card border-0 shadow-sm bg-info text-white h-100">
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="text-white-50 mb-2">Total Farmers</h6>
-                        <h2 class="fw-bold mb-0">{{ \App\Models\Farmer::count() }}</h2>
+                        <h6 class="text-white-50 mb-2">Pending Approvals</h6>
+                        <h2 class="fw-bold mb-0">{{ \App\Models\User::where('is_admin', false)->where('is_approved', false)->count() }}</h2>
                     </div>
                     <div>
-                        <i class="bi bi-people display-4 opacity-50"></i>
+                        <i class="bi bi-person-check display-4 opacity-50"></i>
                     </div>
                 </div>
             </div>
             <div class="card-footer bg-transparent border-0">
-                <a href="{{ route('admin.farmers.index') }}" class="text-white text-decoration-none small">
-                    View Farmers <i class="bi bi-arrow-right"></i>
+                <a href="{{ route('admin.users.index') }}" class="text-white text-decoration-none small">
+                    View Pending <i class="bi bi-arrow-right"></i>
                 </a>
             </div>
         </div>

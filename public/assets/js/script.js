@@ -187,6 +187,21 @@ document.addEventListener("click", function (e) {
         return;
 
     e.preventDefault();
+
+    // Check if user is logged in
+    if (!window.isLoggedIn) {
+        if (window.showToast) {
+            window.showToast("Please login to add items to cart.", { type: "warning" });
+        } else {
+            alert("Please login to add items to cart.");
+        }
+        
+        setTimeout(() => {
+            window.location.href = window.loginUrl || "/login";
+        }, 1000);
+        return;
+    }
+
     const button = btn;
     const originalText = button.innerHTML;
 
@@ -265,6 +280,7 @@ document.addEventListener("click", function (e) {
                 if (!item.name) item.name = "Product";
                 if (item.price === null || isNaN(item.price)) item.price = 0;
                 window.AgriCart.add(item);
+                if (window.showToast) window.showToast(item.name + ' added to cart.');
             }
         } catch (err) {
             // ignore

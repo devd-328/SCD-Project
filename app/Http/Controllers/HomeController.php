@@ -20,6 +20,7 @@ class HomeController extends Controller
             return [
                 'id' => $p->id,
                 'name' => $p->name,
+                'description' => $p->description ?? '',
                 'category' => $p->category ?? 'Other',
                 'price' => (float) $p->price,
                 'unit' => $p->unit ?? 'kg',
@@ -35,6 +36,7 @@ class HomeController extends Controller
                 [
                     'id' => 1,
                     'name' => 'Organic Tomatoes',
+                    'description' => 'Fresh, juicy organic tomatoes grown without pesticides',
                     'category' => 'Vegetables',
                     'price' => 175,
                     'unit' => 'kg',
@@ -44,6 +46,7 @@ class HomeController extends Controller
                 [
                     'id' => 2,
                     'name' => 'Fresh Eggs',
+                    'description' => 'Free-range eggs from happy chickens',
                     'category' => 'Dairy',
                     'price' => 300,
                     'unit' => 'dozen',
@@ -53,6 +56,7 @@ class HomeController extends Controller
                 [
                     'id' => 3,
                     'name' => 'Organic Carrots',
+                    'description' => 'Sweet and crunchy organic carrots',
                     'category' => 'Vegetables',
                     'price' => 200,
                     'unit' => 'kg',

@@ -19,4 +19,16 @@ class FarmerController extends Controller
 
         return view('farmers.index', compact('farmers'));
     }
+
+    /**
+     * Display the specified farmer and their products.
+     */
+    public function show($id)
+    {
+        $farmer = Farmer::with(['products' => function($query) {
+            $query->where('status', 'active');
+        }])->findOrFail($id);
+
+        return view('farmers.show', compact('farmer'));
+    }
 }

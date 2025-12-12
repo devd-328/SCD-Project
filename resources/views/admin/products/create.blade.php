@@ -120,11 +120,14 @@
                     <div class="mb-3">
                         <label for="image" class="form-label">Product Image</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror" 
-                               id="image" name="image" accept=".jpg,.jpeg,.png,.webp">
+                               id="image" name="image" accept=".jpg,.jpeg,.png,.webp" onchange="previewImage(this)">
                         <small class="text-muted">Max size: 1MB. Allowed formats: JPG, PNG, WebP</small>
                         @error('image')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                        <div class="mt-2">
+                            <img id="image-preview" src="#" alt="Image Preview" class="img-thumbnail" style="display: none; max-width: 200px;">
+                        </div>
                     </div>
 
                     <!-- Harvest Date -->
@@ -179,3 +182,21 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function(e) {
+                var preview = document.getElementById('image-preview');
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+@endpush

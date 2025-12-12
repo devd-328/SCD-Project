@@ -28,10 +28,7 @@
                         </h5>
                         
                         <form action="{{ route('products.index') }}" method="GET" id="filterForm">
-                            <div class="mb-4">
-                                <label class="form-label fw-semibold">Search Products</label>
-                                <input type="text" name="search" class="form-control" placeholder="Search..." value="{{ $search ?? '' }}">
-                            </div>
+                            
                             <div class="mb-4">
                                 <label class="form-label fw-semibold">Category</label>
                                 <select name="category" class="form-select" onchange="document.getElementById('filterForm').submit()">
@@ -229,50 +226,6 @@ document.addEventListener('DOMContentLoaded', function() {
             modalCartBtn.classList.add('add-to-cart-btn');
         });
     });
-
-    // Add to Cart for product cards
-    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-        if (button.dataset.cartAttached) return;
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const item = {
-                id: this.getAttribute('data-id'),
-                name: this.getAttribute('data-name'),
-                price: parseFloat(this.getAttribute('data-price')),
-                qty: 1, // Always add only one item per click
-                image: this.getAttribute('data-image')
-            };
-            if (window.AgriCart && typeof window.AgriCart.add === 'function') {
-                window.AgriCart.add(item);
-                if (window.showToast) showToast(item.name + ' added to cart.');
-            } else {
-                alert(item.name + ' added to cart.');
-            }
-        });
-        button.dataset.cartAttached = '1';
-    });
-
-    // Add to Cart for modal
-    const modalCartBtn = document.getElementById('modal-add-to-cart');
-    if (modalCartBtn && !modalCartBtn.dataset.cartAttached) {
-        modalCartBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const item = {
-                id: this.getAttribute('data-id'),
-                name: this.getAttribute('data-name'),
-                price: parseFloat(this.getAttribute('data-price')),
-                qty: 1, // Always add only one item per click
-                image: this.getAttribute('data-image')
-            };
-            if (window.AgriCart && typeof window.AgriCart.add === 'function') {
-                window.AgriCart.add(item);
-                if (window.showToast) showToast(item.name + ' added to cart.');
-            } else {
-                alert(item.name + ' added to cart.');
-            }
-        });
-        modalCartBtn.dataset.cartAttached = '1';
-    }
 });
 </script>
 @endpush

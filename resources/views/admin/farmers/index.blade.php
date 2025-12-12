@@ -8,9 +8,14 @@
         <h2 class="fw-bold mb-1">Farmers Management</h2>
         <p class="text-muted">Manage all farmers in your community</p>
     </div>
-    <a href="{{ route('admin.farmers.create') }}" class="btn btn-success">
-        <i class="bi bi-plus-circle me-2"></i> Add New Farmer
-    </a>
+    <div class="d-flex gap-2">
+        <a href="{{ route('admin.dashboard') }}" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+        </a>
+        <a href="{{ route('admin.farmers.create') }}" class="btn btn-success">
+            <i class="bi bi-plus-circle me-2"></i> Add New Farmer
+        </a>
+    </div>
 </div>
 
 <!-- Farmers Table -->
@@ -73,15 +78,13 @@
                                    class="btn btn-warning" title="Edit">
                                     <i class="bi bi-pencil"></i>
                                 </a>
-                                <form action="{{ route('admin.farmers.destroy', $farmer->id) }}" 
-                                      method="POST" class="d-inline"
-                                      onsubmit="return confirm('Are you sure you want to delete this farmer?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger" title="Delete">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </form>
+                                <button type="button" class="btn btn-danger" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#deleteConfirmationModal" 
+                                        data-action="{{ route('admin.farmers.destroy', $farmer->id) }}"
+                                        title="Delete">
+                                    <i class="bi bi-trash"></i>
+                                </button>
                             </div>
                         </td>
                     </tr>
