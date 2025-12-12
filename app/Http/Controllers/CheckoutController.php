@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\OrderItem;
@@ -83,6 +84,7 @@ class CheckoutController extends Controller
             // create order
             $orderNumber = 'ORD' . now()->format('YmdHis') . rand(100, 999);
             $order = Order::create([
+                'user_id' => Auth::id(),
                 'order_number' => $orderNumber,
                 'name' => $data['name'],
                 'email' => $data['email'],

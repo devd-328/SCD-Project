@@ -49,4 +49,9 @@ class User extends Authenticatable
             'is_approved' => 'boolean',
         ];
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

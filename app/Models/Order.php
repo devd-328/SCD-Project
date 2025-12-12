@@ -10,11 +10,21 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_number', 'name', 'email', 'phone', 'address', 'payment_method', 'subtotal', 'tax', 'total'
+        'user_id', 'order_number', 'name', 'email', 'phone', 'address', 'payment_method', 'subtotal', 'tax', 'total', 'status'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function getTotalAmountAttribute()
+    {
+        return $this->total;
     }
 }
